@@ -1,2 +1,1 @@
-# capture.github.io
-experimental
+# It is a copy https://scrnrcrd.com/
