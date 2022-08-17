@@ -5,21 +5,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./static/js/main.js?v=2" type="module" defer></script>
+    <link rel="stylesheet" href="/static/css/styles.css?v=0" />
+    <script src="/static/js/main.js?v=3" type="module" defer></script>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
 
   <body>
     <div id="main_el">
       <img id="countdown" src="" />
-      <video
-        id="video"
-        style="width: 100%; display: none"
-        controls
-        autoplay
-        loop
-      ></video>
+      <video id="video" style="display: none" controls autoplay loop></video>
     </div>
 
-    <img id="download" src="" />
+    <button
+      id="download"
+      class="button-63"
+      role="button"
+      style="visibility: hidden"
+    >
+      Download
+    </button>
   </body>
 </html>

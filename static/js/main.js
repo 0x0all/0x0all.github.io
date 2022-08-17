@@ -55,7 +55,7 @@ const stop_screen_capture = () => {
   );
   document.getElementById("video").src = recording;
   document.getElementById("video").style.display = "block";
-  document.getElementById("download").src = "static/img/download.png";
+  document.getElementById("download").style.visibility = "visible";
   document.getElementById("download").addEventListener("click", () => {
     var a = document.createElement("a");
     document.body.appendChild(a);
