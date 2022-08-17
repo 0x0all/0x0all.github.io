@@ -12,7 +12,11 @@ const start_screen_capture = async () => {
     video: {
       cursor: "never",
     },
-    audio: true,
+    audio: {
+      echoCancellation: true,
+      noiseSuppression: true,
+      sampleRate: 44100,
+    },
   };
 
   try {
