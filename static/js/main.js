@@ -12,24 +12,19 @@ const start_screen_capture = async () => {
     video: {
       cursor: "never",
     },
-    audio: {
-      echoCancellation: true,
-      noiseSuppression: true,
-      sampleRate: 44100,
-    },
+    audio: true,
   };
 
   try {
     capture_stream = await navigator.mediaDevices.getDisplayMedia(
       displayMediaOptions
     );
-
   } catch (err) {
     console.error("Error: " + err);
   }
 
   media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm",
+    mimeType: "video/webm;codecs=vp9",
   });
   media_recorder.addEventListener("dataavailable", (event) => {
     if (event.data && event.data.size > 0) {
@@ -56,7 +51,7 @@ const stop_screen_capture = () => {
   capture_stream.getTracks().forEach((track) => track.stop());
   capture_stream = null;
   recording = window.URL.createObjectURL(
-    new Blob(chunks, { type: "video/webm;codecs=h264" })
+    new Blob(chunks, { type: "video/webm" })
   );
   document.getElementById("video").src = recording;
   document.getElementById("video").style.display = "block";
