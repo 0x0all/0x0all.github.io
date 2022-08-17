@@ -24,7 +24,6 @@ const start_screen_capture = async () => {
       displayMediaOptions
     );
 
-    dumpOptionsInfo();
   } catch (err) {
     console.error("Error: " + err);
   }
@@ -57,7 +56,7 @@ const stop_screen_capture = () => {
   capture_stream.getTracks().forEach((track) => track.stop());
   capture_stream = null;
   recording = window.URL.createObjectURL(
-    new Blob(chunks, { type: "video/webm" })
+    new Blob(chunks, { type: "video/webm;codecs=h264" })
   );
   document.getElementById("video").src = recording;
   document.getElementById("video").style.display = "block";
@@ -74,8 +73,6 @@ const stop_screen_capture = () => {
 
 document.getElementById("countdown").addEventListener("click", () => {
   document.getElementById("countdown").src = "";
-  document.getElementById("main_el").style.paddingLeft = "20%";
-  document.getElementById("main_el").style.paddingRight = "20%";
   stop_screen_capture();
 });
 
