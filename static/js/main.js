@@ -7,15 +7,13 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-const start_screen_capture = async () => {
+document.getElementById("begin").onclick = async () => {
   const displayMediaOptions = {
     video: {
       cursor: "never",
     },
     audio: true,
   };
-
-  // let capture_stream;
 
   try {
     capture_stream = await navigator.mediaDevices.getDisplayMedia(
@@ -24,9 +22,6 @@ const start_screen_capture = async () => {
   } catch (err) {
     console.error("Error: " + err);
   }
-
-  // let vidId = document.getElementById("video");
-  // vidId.srcObject = capture_stream;
 
   media_recorder = new MediaRecorder(capture_stream, {
     mimeType: "video/webm;codecs=vp9",
@@ -74,8 +69,4 @@ const stop_screen_capture = () => {
 document.getElementById("countdown").addEventListener("click", () => {
   document.getElementById("countdown").src = "";
   stop_screen_capture();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  start_screen_capture();
 });
