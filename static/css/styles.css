@@ -3,6 +3,7 @@ video {
   margin: 10px auto;
   width: 800px;
   height: 600px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .button-63 {
@@ -87,8 +88,11 @@ body {
 center {
   width: 100%;
   max-width: 800px;
-  padding: 15px;
-  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -400px;
 }
 
 button {
