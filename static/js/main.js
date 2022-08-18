@@ -25,8 +25,8 @@ const start_screen_capture = async () => {
     console.error("Error: " + err);
   }
 
-  // let vidId = document.getElementById("video")
-  // vidId.srcObject = capture_stream;
+  let vidId = document.getElementById("video");
+  vidId.srcObject = capture_stream;
 
   media_recorder = new MediaRecorder(capture_stream, {
     mimeType: "video/webm;codecs=vp9",
