@@ -36,7 +36,7 @@ document.getElementById("begin").onclick = async () => {
   }
 
   media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm;codecs=opus",
+    mimeType: "video/webm;codecs=vp8,opus",
   });
   media_recorder.addEventListener("dataavailable", (event) => {
     if (event.data && event.data.size > 0) {
