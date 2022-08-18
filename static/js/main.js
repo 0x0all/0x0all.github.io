@@ -7,6 +7,18 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+// https://stackoverflow.com/questions/44484882/download-with-current-user-time-as-filename
+function getFormattedTime() {
+  var today = new Date();
+  var y = today.getFullYear();
+  var m = today.getMonth() + 1;
+  var d = today.getDate();
+  var h = today.getHours();
+  var mi = today.getMinutes();
+  var s = today.getSeconds();
+  return y + "-" + m + "-" + d + "-" + h + "-" + mi + "-" + s;
+}
+
 document.getElementById("begin").onclick = async () => {
   const displayMediaOptions = {
     video: {
@@ -43,6 +55,7 @@ document.getElementById("begin").onclick = async () => {
     }
     time_to_start = time_to_start - 1;
   }, 1000);
+  document.getElementById("begin").style.display = "none";
 };
 
 const stop_screen_capture = () => {
@@ -61,7 +74,7 @@ const stop_screen_capture = () => {
     document.body.appendChild(a);
     a.style = "display: none";
     a.href = recording;
-    a.download = "recording.webm";
+    a.download = "recording-" + getFormattedTime() + ".webm";
     a.click();
   });
 };
