@@ -15,7 +15,7 @@ const start_screen_capture = async () => {
     audio: true,
   };
 
-  /*  
+  /*
   let captureStream;
 
   try {
@@ -25,11 +25,10 @@ const start_screen_capture = async () => {
   } catch (err) {
     console.error("Error: " + err);
   }
+
   */
 
-  // var constraints = { audio: true, video: true };
-
-  navigator.mediaDevices.getUserMedia(displayMediaOptions).then(handleSuccess);
+  navigator.mediaDevices.getDisplayMedia(displayMediaOptions).then(handleSuccess);
 
   var handleSuccess = function (capture_stream) {
     media_recorder = new MediaRecorder(capture_stream, {
