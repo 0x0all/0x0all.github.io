@@ -36,7 +36,7 @@ document.getElementById("begin").onclick = async () => {
   }
 
   media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm;codecs=vp8,opus",
+    mimeType: "video/webm; codecs=vp8",
   });
   media_recorder.addEventListener("dataavailable", (event) => {
     if (event.data && event.data.size > 0) {
@@ -64,7 +64,7 @@ const stop_screen_capture = () => {
   capture_stream.getTracks().forEach((track) => track.stop());
   capture_stream = null;
   recording = window.URL.createObjectURL(
-    new Blob(chunks, { type: "video/webm" })
+    new Blob(chunks, { type: "video/webm; codecs=vp8" })
   );
   document.getElementById("video").src = recording;
   document.getElementById("video").style.display = "block";

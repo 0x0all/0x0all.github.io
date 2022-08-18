@@ -1,8 +1,8 @@
 video {
   background: #222;
   margin: 10px auto;
-  width: 640px;
-  height: 360px;
+  width: 800px;
+  height: 600px;
 }
 
 .button-63 {
@@ -86,17 +86,11 @@ body {
 
 center {
   width: 100%;
-  max-width: 330px;
+  max-width: 800px;
   padding: 15px;
   margin: auto;
 }
 
-/*
-* {    
-  position: relative;    
-  box-sizing: border-box;    
-  height: auto;    
-  padding: 10px;    
-  font-size: 16px;    
-}    
-*/
+button {
+  position: relative;
+}
