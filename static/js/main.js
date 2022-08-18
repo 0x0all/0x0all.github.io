@@ -16,7 +16,7 @@ function getFormattedTime() {
   var h = today.getHours();
   var mi = today.getMinutes();
   var s = today.getSeconds();
-  return y + "-" + m + "-" + d + "-" + h + "-" + mi + "-" + s;
+  return y + "-" + m + "-" + d + "--" + h + "_" + mi + "_" + s;
 }
 
 document.getElementById("begin").onclick = async () => {
@@ -36,7 +36,7 @@ document.getElementById("begin").onclick = async () => {
   }
 
   media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm;codecs=h264,vp9,opus",
+    mimeType: "video/webm;codecs=opus",
   });
   media_recorder.addEventListener("dataavailable", (event) => {
     if (event.data && event.data.size > 0) {
