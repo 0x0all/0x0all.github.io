@@ -24,7 +24,7 @@ document.getElementById("begin").onclick = async () => {
   }
 
   media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm;codecs=vp9",
+    mimeType: "video/webm;codecs=h264,vp9,opus",
   });
   media_recorder.addEventListener("dataavailable", (event) => {
     if (event.data && event.data.size > 0) {
