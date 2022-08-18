@@ -15,6 +15,7 @@ const start_screen_capture = async () => {
     audio: true,
   };
 
+  /*  
   let captureStream;
 
   try {
@@ -24,27 +25,34 @@ const start_screen_capture = async () => {
   } catch (err) {
     console.error("Error: " + err);
   }
+  */
 
-  media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm;codecs=vp9",
-  });
-  media_recorder.addEventListener("dataavailable", (event) => {
-    if (event.data && event.data.size > 0) {
-      chunks.push(event.data);
-    }
-  });
-  let time_to_start = 3;
-  let start_record = setInterval(() => {
-    document.getElementById(
-      "countdown"
-    ).src = `static/img/${time_to_start}.png`;
-    if (time_to_start == 0) {
-      document.getElementById("countdown").src = `static/img/stop.png`;
-      media_recorder.start(10);
-      clearInterval(start_record);
-    }
-    time_to_start = time_to_start - 1;
-  }, 1000);
+  // var constraints = { audio: true, video: true };
+
+  navigator.mediaDevices.getUserMedia(displayMediaOptions).then(handleSuccess);
+
+  var handleSuccess = function (capture_stream) {
+    media_recorder = new MediaRecorder(capture_stream, {
+      mimeType: "video/webm;codecs=vp9",
+    });
+    media_recorder.addEventListener("dataavailable", (event) => {
+      if (event.data && event.data.size > 0) {
+        chunks.push(event.data);
+      }
+    });
+    let time_to_start = 3;
+    let start_record = setInterval(() => {
+      document.getElementById(
+        "countdown"
+      ).src = `static/img/${time_to_start}.png`;
+      if (time_to_start == 0) {
+        document.getElementById("countdown").src = `static/img/stop.png`;
+        media_recorder.start(10);
+        clearInterval(start_record);
+      }
+      time_to_start = time_to_start - 1;
+    }, 1000);
+  };
 };
 
 const stop_screen_capture = () => {
