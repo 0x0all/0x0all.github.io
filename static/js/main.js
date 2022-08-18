@@ -15,7 +15,7 @@ const start_screen_capture = async () => {
     audio: true,
   };
 
-  var capture_stream;
+  // let capture_stream;
 
   try {
     capture_stream = await navigator.mediaDevices.getDisplayMedia(
