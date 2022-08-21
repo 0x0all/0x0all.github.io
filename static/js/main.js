@@ -1,7 +1,31 @@
+let m_codecs = [
+  "video/webm;codecs=vp8",
+  "video/webm;codecs=vp9",
+  "video/webm;codecs=vp8.0",
+  "video/webm;codecs=vp9.0",
+  "video/webm;codecs=h264",
+  "video/webm;codecs=H264",
+  "video/webm;codecs=avc1",
+  "video/webm;codecs=vp8,opus",
+  "video/WEBM;codecs=VP8,OPUS",
+  "video/webm;codecs=vp9,opus",
+  "video/webm;codecs=vp8,vp9,opus",
+  "video/webm;codecs=h264,opus",
+  "video/webm;codecs=h264,vp9,opus",
+  "video/x-matroska;codecs=avc1",
+].filter((x) => MediaRecorder.isTypeSupported(x));
+
+if (m_codecs.length < 1) {
+  console.log("There is no supported codec");
+}
+
+console.log(m_codecs);
+
 var capture_stream = null;
 var media_recorder = null;
 var chunks = [];
 var recording = null;
+var use_codecs = m_codecs[0];
 
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -36,7 +60,7 @@ document.getElementById("begin").onclick = async () => {
   }
 
   media_recorder = new MediaRecorder(capture_stream, {
-    mimeType: "video/webm; codecs=vp8",
+    mimeType: use_codecs,
   });
   media_recorder.addEventListener("dataavailable", (event) => {
     if (event.data && event.data.size > 0) {
@@ -64,7 +88,7 @@ const stop_screen_capture = () => {
   capture_stream.getTracks().forEach((track) => track.stop());
   capture_stream = null;
   recording = window.URL.createObjectURL(
-    new Blob(chunks, { type: "video/webm; codecs=vp8" })
+    new Blob(chunks, { type: use_codecs })
   );
   document.getElementById("video").src = recording;
   document.getElementById("video").style.display = "block";
