@@ -13,6 +13,8 @@ let m_codecs = [
   "video/webm;codecs=h264,opus",
   "video/webm;codecs=h264,vp9,opus",
   "video/x-matroska;codecs=avc1",
+  "video/mpeg4",
+  "video/webm;codecs=daala",
 ].filter((x) => MediaRecorder.isTypeSupported(x));
 
 if (m_codecs.length < 1) {
