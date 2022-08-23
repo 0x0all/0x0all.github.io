@@ -19,7 +19,7 @@ let m_codecs = [
 
 if (m_codecs.length < 1) {
   console.log("There is no supported codec");
-  return;
+  process.exit(1);
 }
 
 console.log(m_codecs);
