@@ -19,9 +19,13 @@ let m_codecs = [
 
 if (m_codecs.length < 1) {
   console.log("There is no supported codec");
+  return;
 }
 
 console.log(m_codecs);
+
+document.getElementById("err").style.display = "none";
+document.getElementById("begin").style.display = "block";
 
 var capture_stream = null;
 var media_recorder = null;
